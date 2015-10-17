@@ -4,7 +4,7 @@ from flask.ext.login import UserMixin
 
 
 class User (UserMixin, db.Model):
-	__tablename__ = 'animal'
+	__tablename__ = 'user'
 
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), unique=True, index=True)
@@ -24,3 +24,4 @@ class User (UserMixin, db.Model):
 	def save(self):
 		db.session.add(self)
 		db.session.commit()
+
