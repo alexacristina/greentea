@@ -1,4 +1,5 @@
-from flask import Flask
+
+from flask import Flask, request
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
@@ -19,3 +20,4 @@ manager.add_command('db', MigrateCommand)
 
 Bootstrap(app)
 from app import views, models
+

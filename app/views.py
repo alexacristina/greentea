@@ -15,3 +15,8 @@ def index():
 @app.route('/signup')
 def signup():
 	return render_template('signup.html')
+
+@app.route('/lessons')
+def lessons():
+	return "Here, there will be the lessons"
+
