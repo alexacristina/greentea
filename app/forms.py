@@ -5,6 +5,7 @@ from flask.ext.wtf.html5 import EmailField
 from app.models import User
 from werkzeug.security import check_password_hash
 
+
 class SignupForm(Form):
     first_name = TextField('First Name', [Required(), Length(3)])
     last_name = TextField( 'Last Name', [Required(), Length(3)])
