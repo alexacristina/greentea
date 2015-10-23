@@ -17,11 +17,13 @@ def index():
 def signup():
 	signup_form = SignupForm(request.form)
 	login_form = LoginForm(request.form)
+	if signup_form.validate_on_submit():
+		return redirect(url_for('lessons'))
 	return render_template('signup.html', signup_form=signup_form, login_form=login_form)
 
 @app.route('/lessons')
 def lessons():
-	return "Here, there will be the lessons"
+	return render_template('lessons.html')
 
 
 
