@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap
 
 
 def run():
-	app.run(debug=True)
+	app.run()
 
 if __name__ == "__main__":
 	run()
