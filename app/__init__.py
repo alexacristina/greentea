@@ -8,7 +8,7 @@ from flask.ext.login import LoginManager
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('config.py')
-app.secret_key = "secret"
+app.secret_key = "secret"	
 
 db = SQLAlchemy(app)
 

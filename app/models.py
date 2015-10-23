@@ -26,4 +26,16 @@ class User (UserMixin, db.Model):
 		db.session.add(self)
 		db.session.commit()
 
+class Lesson(db.Model):
+	__tablename__ = 'lesson'
+
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(64), unique=True, index=True)
+
+	def __init__(self, name):
+		self.name = name
+
+	
+
+
 
