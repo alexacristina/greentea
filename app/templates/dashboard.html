@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+  	<meta charset="utf-8">
+  	<title>Dashboard-1</title>
+
+    <link rel="stylesheet" type="text/css" href="static/dashboard_stylesheet.css" />
+
+<!-- font gruppo -->
+   <link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+
+   <link href="bootstrap.min.css" rel="stylesheet">
+
+
+  	<div class="row" style="height:80px;"></div>
+ 
+
+  	<div class="row" >
+
+  		<div class="col-md-8 col-md-offset-3" id="achievements_panel">
+  			
+  				<div class="col-md-9" id="achievements">
+  					<div class="col-md-4" id="">
+						<svg id="countdown_muted_circle" class="svg_timer" viewbox="0 0 250 250">
+  						<path id="border1" transform="translate(125,125)" />
+  						<path id="loader1" transform="translate(125,125) scale(.70)" />
+						</svg>
+
+						<svg id="countdown_active_circle" class="svg_timer" viewbox="0 0 250 250">
+  						<path id="border" transform="translate(125,125)" />
+  						<path id="loader" transform="translate(125,125) scale(.70)" />
+						</svg>
+					</div>
+
+  					<div class="col-md-4" id=""></div>
+  					<div class="col-md-4" id=""></div>
+  				</div>
+
+  				<div class="col-md-3" id="total_score">
+  					<div class="row" id="total_score_text1">465</div>
+  					<div class="row" id="total_score_text">puncte</div>
+  					
+  				</div>
+  			
+  		</div>  		
+  		<div class="col-md-1"></div>
+
+
+  	</div>
+
+
+    <br><br>
+
+  	<div class="row">
+
+  		<div class="col-md-3"></div>
+  		<div class="col-md-8" id="lessons_panel">
+  			<br><br>
+  			<div class="row" >
+  				<div class="lesson">
+  					<div class="col-md-3" id="lesson_thumbnail">
+  						<svg width="400" height="110">
+  						<rect transform="translate(45,14)" width="50" height="50" style="fill:#D6D645;  stroke-width:3;stroke:rgb(0,0,0)">
+  						Sorry, your browser does not support inline SVG.  
+					</svg>
+					</div>
+
+  					<div class="col-md-7" id="lesson_name">aria pătratului</div>
+  					<div class="col-md-2"></div>
+  				</div>
+
+  			</div>
+
+  			<div class="row" >
+  				<div class="lesson">
+  					<div class="col-md-3" id="lesson_thumbnail">
+  						<svg width="400" height="110">
+  						<rect transform="translate(32,14)" width="80" height="50" style="fill:#D6D645;  stroke-width:3;stroke:rgb(0,0,0)">
+  						Sorry, your browser does not support inline SVG.  
+					</svg>
+					</div>
+
+  					<div class="col-md-7" id="lesson_name">aria dreptunghiului</div>
+  					<div class="col-md-2"></div>
+
+  				</div>
+
+  			</div>
+
+  			<div class="row" >
+  				<div class="lesson">
+  					<div class="col-md-3" id="lesson_thumbnail">
+              <svg height="250" width="500">
+                <polygon points="20,20 20,60, 130,60, 130,40 50,40, 50,20 " style="fill:#D6D645; stroke-width:3;stroke:rgb(0,0,0)" />
+                Sorry, your browser does not support inline SVG.
+                </svg>
+				    </div>
+
+  					<div class="col-md-7" id="lesson_name">aria figurii compuse</div>
+  					<div class="col-md-2"></div>
+
+  				</div>
+
+  			</div>
+  		</div>
+  		<div class="col-md-2"></div>
+  	</div>
+
+  	<script type="text/javascript" src="static/dashboard.js"></script>
+    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+
+
+{% endblock %}
