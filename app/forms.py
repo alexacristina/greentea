@@ -16,8 +16,8 @@ class SignupForm(Form):
     submit = SubmitField('Sign Up')
 
 class LoginForm(Form):
-    l_email = EmailField('Email', [Email()])
-    l_password = PasswordField('Password', [Required(), Length(6)])
+    email = EmailField('Email', [Email()])
+    password = PasswordField('Password', [Required(), Length(6)])
     submit = SubmitField('Log In')
 
     def validate(self):

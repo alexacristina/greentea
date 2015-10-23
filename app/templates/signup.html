@@ -13,16 +13,16 @@
 										<div class="col-lg-12" >
 											<form id="login-form" action="/login" method="post" role="form" style="display: block;"> 
 												{{login_form.csrf_token}}
-												<div class="form-group {% if login_form.l_email.errors %}has-error{% endif %}">
-													{{login_form.l_email(class='form-control', placeholder=login_form.l_email.label.text)}}
+												<div class="form-group {% if login_form.email.errors %}has-error{% endif %}">
+													{{login_form.email(class='form-control', placeholder=login_form.email.label.text)}}
 													<span class="help-block">
-														{{login_form.l_email.errors|first}}
+														{{login_form.email.errors|first}}
 													</span>
 												</div>
-												<div class="form-group {% if login_form.l_password.errors %}has-error{% endif %}" >
-													{{login_form.l_password(class='form-control', placeholder=login_form.l_password.label.text)}}
+												<div class="form-group {% if login_form.password.errors %}has-error{% endif %}" >
+													{{login_form.password(class='form-control', placeholder=login_form.password.label.text)}}
 													<span class="help-block">
-														{{login_form.l_password.errors|first}}
+														{{login_form.password.errors|first}}
 													</span>
 												</div>
 												<div class="form-group">
@@ -107,8 +107,11 @@
 											
 												<!-- Button -->                                        
 												<div class="col-md-offset-3 col-md-9">
-														{{ signup_form.submit(class_='btn btn-info') }}
-														<i class="icon-hand-right"></i>
+													{{ signup_form.submit(class_='btn btn-info') }}
+													<i class="icon-hand-right"></i>
+													<span class="help-block">
+														{{signup_form.submit.errors|first}}
+													</span>
 												</div>
 										</div>     
 									</div>                      
