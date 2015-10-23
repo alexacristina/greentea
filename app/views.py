@@ -11,7 +11,8 @@ from werkzeug.security import generate_password_hash
 
 @app.route('/')
 def index():
-	return render_template('no-jquery.html')
+	return render_template('index.html')
+
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -23,7 +24,6 @@ def signup():
 
 @app.route('/lessons')
 def lessons():
-	return render_template('lessons.html')
-
+	return render_template('dashboard.html')
 
 
