@@ -85,6 +85,11 @@ color: #999;
   -moz-transition:.3s ease-in-out;
   -webkit-transition:.3s ease-in-out;transition:.3s ease-in-out
   }
+
+.small-button a {
+  text-decoration: none;
+}
+
 .small-button:hover {
   cursor:pointer;
   color:#0099cc;
