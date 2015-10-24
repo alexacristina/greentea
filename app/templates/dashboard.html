@@ -1,112 +1,95 @@
 {% extends "base.html" %}
 {% block content %}
-  	<meta charset="utf-8">
-  	<title>Dashboard-1</title>
-
-    <link rel="stylesheet" type="text/css" href="static/dashboard_stylesheet.css" />
-
-<!-- font gruppo -->
-   <link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
-
-   <link href="bootstrap.min.css" rel="stylesheet">
-
-
-  	<div class="row" style="height:80px;"></div>
- 
-
-  	<div class="row" >
-
-  		<div class="col-md-8 col-md-offset-3" id="achievements_panel">
-  			
-  				<div class="col-md-9" id="achievements">
-  					<div class="col-md-4" id="">
-						<svg id="countdown_muted_circle" class="svg_timer" viewbox="0 0 250 250">
-  						<path id="border1" transform="translate(125,125)" />
-  						<path id="loader1" transform="translate(125,125) scale(.70)" />
-						</svg>
-
-						<svg id="countdown_active_circle" class="svg_timer" viewbox="0 0 250 250">
-  						<path id="border" transform="translate(125,125)" />
-  						<path id="loader" transform="translate(125,125) scale(.70)" />
-						</svg>
-					</div>
-
-  					<div class="col-md-4" id=""></div>
-  					<div class="col-md-4" id=""></div>
-  				</div>
-
-  				<div class="col-md-3" id="total_score">
-  					<div class="row" id="total_score_text1">465</div>
-  					<div class="row" id="total_score_text">puncte</div>
-  					
-  				</div>
-  			
-  		</div>  		
-  		<div class="col-md-1"></div>
-
-
-  	</div>
-
-
-    <br><br>
-
-  	<div class="row">
-
-  		<div class="col-md-3"></div>
-  		<div class="col-md-8" id="lessons_panel">
-  			<br><br>
-  			<div class="row" >
-  				<div class="lesson">
-  					<div class="col-md-3" id="lesson_thumbnail">
-  						<svg width="400" height="110">
-  						<rect transform="translate(45,14)" width="50" height="50" style="fill:#D6D645;  stroke-width:3;stroke:rgb(0,0,0)">
-  						Sorry, your browser does not support inline SVG.  
-					</svg>
-					</div>
-
-  					<div class="col-md-7" id="lesson_name">aria pătratului</div>
-  					<div class="col-md-2"></div>
-  				</div>
-
-  			</div>
-
-  			<div class="row" >
-  				<div class="lesson">
-  					<div class="col-md-3" id="lesson_thumbnail">
-  						<svg width="400" height="110">
-  						<rect transform="translate(32,14)" width="80" height="50" style="fill:#D6D645;  stroke-width:3;stroke:rgb(0,0,0)">
-  						Sorry, your browser does not support inline SVG.  
-					</svg>
-					</div>
-
-  					<div class="col-md-7" id="lesson_name">aria dreptunghiului</div>
-  					<div class="col-md-2"></div>
-
-  				</div>
-
-  			</div>
-
-  			<div class="row" >
-  				<div class="lesson">
-  					<div class="col-md-3" id="lesson_thumbnail">
-              <svg height="250" width="500">
-                <polygon points="20,20 20,60, 130,60, 130,40 50,40, 50,20 " style="fill:#D6D645; stroke-width:3;stroke:rgb(0,0,0)" />
-                Sorry, your browser does not support inline SVG.
-                </svg>
-				    </div>
-
-  					<div class="col-md-7" id="lesson_name">aria figurii compuse</div>
-  					<div class="col-md-2"></div>
-
-  				</div>
-
-  			</div>
-  		</div>
-  		<div class="col-md-2"></div>
-  	</div>
-
-  	<script type="text/javascript" src="static/dashboard.js"></script>
-    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+<div class="container">
+  <div class="row row-x">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 resize-it">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            Bhaumik Patel</h4>
+                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Social</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Social</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Github</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+               
+                <div class="avatar">
+                    <img src="https://41.media.tumblr.com/d3496cd756e4ed7c0dbd9ac2f503fe1e/tumblr_nwp6htOe7N1udztn8o3_75sq.png" alt="" />
+                </div>
+                <div class="content">
+                    <p>Web Developer <br>
+                       More description here</p>
+                    <p><button type="button" class="btn btn-default">Aria Pătratului</button></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="avatar av-one">
+                    <img src="https://41.media.tumblr.com/5b954822e4ac8bb220c4e237cb69d350/tumblr_nwpbfpovRs1udztn8o1_100.png" alt="" />
+                </div>
+                <div class="content">
+                    <p>Web Developer <br>
+                       More description here</p>
+                    <p><button type="button" class="btn btn-default">Aria dreptunghiului</button></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="avatar ">
+                    <img src="https://36.media.tumblr.com/fa810f8e1c360d33386307e968eecf3e/tumblr_nwp6htOe7N1udztn8o1_100.png" alt="" />
+                </div>
+                <div class="content">
+                    <p>Web Developer <br>
+                       More description here</p>
+                    <p><button type="button" class="btn btn-default">Aria figurii compuse</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+      
+    </div>
+</div>
+
+
+<img class="src-image"  src="http://www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg"/>
+
+<img class="src-image"  src="http://www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg"/>
+
+<img class="src-image"  src="http://www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg"/>
 {% endblock %}

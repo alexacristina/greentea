@@ -1,140 +1,397 @@
-/*! SVG Pie Timer 0.9.1 | Anders Grimsrud, grint.no | MIT License | github.com/agrimsrud/svgPieTimer.js */
 
-;(function(w) {
+/////////////////by diana
+/*
 
-    'use strict';
+This Snippet is using a modified Stack Blur js lib for blurring the header images.
 
-    // Date.now fix by Ari Fuchs, afuchs.tumblr.com/post/23550124774/date-now-in-ie8
+I could not use hosted images because Canvas cannot work with cross domain images. If you want to use hosted images make sure they are on the same domain.
 
-    Date.now = Date.now || function() { return +new Date };
+Have fun!
 
-    // Draw SVG path
-  
-    function draw(element, rate) {
-        var count = element.length,
-            angle = 360 * rate;
+*/
 
-        angle %= 360;
+/*
 
-        var rad = (angle * Math.PI / 180), 
-            x = Math.sin(rad) * 125, 
-            y = Math.cos(rad) * - 125, 
-            mid = (angle > 180) ? 1 : 0, 
-            shape = 'M 0 0 v -125 A 125 125 1 ' 
-                   + mid + ' 1 ' 
-                   +  x  + ' ' 
-                   +  y  + ' z';
+StackBlur - a fast almost Gaussian Blur For Canvas
 
-        // If array of elements, draw each one
-      
-        if(element instanceof Array)
-            while(count--)
-                element[count].setAttribute('d', shape)
-        else
-            element.setAttribute('d', shape)
-    }
+Version:     0.5
+Author:     Mario Klingemann
+Contact:    mario@quasimondo.com
+Website:    http://www.quasimondo.com/StackBlurForCanvas
+Twitter:    @quasimondo
 
-    // Prepare timer
-    // Define in global scope
-  
-    w.svgPieTimer = function(props) {
+In case you find this class useful - especially in commercial projects -
+I am not totally unhappy for a small donation to my PayPal account
+mario@quasimondo.de
 
-        var element = props.element,
-            duration = props.duration || 1000,
-            n = props.loops;
+Or support me on flattr: 
+https://flattr.com/thing/72791/StackBlur-a-fast-almost-Gaussian-Blur-Effect-for-CanvasJavascript
 
-        // Optional warning
+Copyright (c) 2010 Mario Klingemann
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+var mul_table = [
+        512,512,456,512,328,456,335,512,405,328,271,456,388,335,292,512,
+        454,405,364,328,298,271,496,456,420,388,360,335,312,292,273,512,
+        482,454,428,405,383,364,345,328,312,298,284,271,259,496,475,456,
+        437,420,404,388,374,360,347,335,323,312,302,292,282,273,265,512,
+        497,482,468,454,441,428,417,405,394,383,373,364,354,345,337,328,
+        320,312,305,298,291,284,278,271,265,259,507,496,485,475,465,456,
+        446,437,428,420,412,404,396,388,381,374,367,360,354,347,341,335,
+        329,323,318,312,307,302,297,292,287,282,278,273,269,265,261,512,
+        505,497,489,482,475,468,461,454,447,441,435,428,422,417,411,405,
+        399,394,389,383,378,373,368,364,359,354,350,345,341,337,332,328,
+        324,320,316,312,309,305,301,298,294,291,287,284,281,278,274,271,
+        268,265,262,259,257,507,501,496,491,485,480,475,470,465,460,456,
+        451,446,442,437,433,428,424,420,416,412,408,404,400,396,392,388,
+        385,381,377,374,370,367,363,360,357,354,350,347,344,341,338,335,
+        332,329,326,323,320,318,315,312,310,307,304,302,299,297,294,292,
+        289,287,285,282,280,278,275,273,271,269,267,265,263,261,259];
         
-        if(!element) throw "SVG Pie Timer: Error - element required"
-
-        // This part might be confusing:
-        // If n==0, do infinite loops
-        // In other cases where n is set, do n loops
-        // If n is not set, do 1 loop
-        // Do it this way to prevent mixing n==0 and !n
-        
-        n = (n==0) ? 0 : n ? n : 1;
-
-        var end = Date.now() + duration * n,
-            totaldur = duration * n;
-
-        // Animate frame by frame
-      
-        (function frame() {
-            var current = Date.now(),
-                remaining = end - current,
-
-                // Now set rotation rate
-                // E.g. 50% of first loop returns 1.5
-                // E.g. 75% of sixth loop returns 6.75
-                // Has to return >0 for SVG to be drawn correctly
-                // If you need the current loop, use Math.floor(rate)
-
-                rate = n + 1 - remaining / duration;
-
-            // As requestAnimationFrame will draw whenever capable, 
-            // the animation might end before it reaches 100%.
-            // Let's simulate completeness on the last visual
-            // frame of the loop, regardless of actual progress
-          
-            if(remaining < 60) {
-                
-                // 1.0 might break, set to slightly lower than 1
-                // Update: Set to slightly lower than n instead
-              
-                draw(element, n - 0.0001);
-              
-              
-                // Stop animating when we reach n loops (if n is set)
-             
-                if(remaining < totaldur && n) return
-            }
    
-            // To reverse, uncomment this line
-            //rate = 360 - rate;
-          
-            // Draw
-            draw(element, rate);
-          
-            // Request next frame
-          
-           requestAnimationFrame(frame);
-        }());
+var shg_table = [
+         9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17, 
+        17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19, 
+        19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20,
+        20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21,
+        21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21,
+        21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 
+        22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22,
+        22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23, 
+        23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
+        23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
+        23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 
+        23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 
+        24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
+        24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
+        24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
+        24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ];
+
+
+function stackBlurCanvasRGBA( canvas, top_x, top_y, width, height, radius )
+{
+    if ( isNaN(radius) || radius < 1 ) return;
+    radius |= 0;
+    
+    var context = canvas.getContext("2d");
+    var imageData;
+    
+    try {
+      try {
+        imageData = context.getImageData( top_x, top_y, width, height );
+      } catch(e) {
+      
+        // NOTE: this part is supposedly only needed if you want to work with local files
+        // so it might be okay to remove the whole try/catch block and just use
+        // imageData = context.getImageData( top_x, top_y, width, height );
+        try {
+            netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+            imageData = context.getImageData( top_x, top_y, width, height );
+        } catch(e) {
+            alert("Cannot access local image");
+            throw new Error("unable to access local image data: " + e);
+            return;
+        }
+      }
+    } catch(e) {
+      alert("Cannot access image");
+      throw new Error("unable to access image data: " + e);
+    }
+            
+    var pixels = imageData.data;
+            
+    var x, y, i, p, yp, yi, yw, r_sum, g_sum, b_sum, a_sum, 
+    r_out_sum, g_out_sum, b_out_sum, a_out_sum,
+    r_in_sum, g_in_sum, b_in_sum, a_in_sum, 
+    pr, pg, pb, pa, rbs;
+            
+    var div = radius + radius + 1;
+    var w4 = width << 2;
+    var widthMinus1  = width - 1;
+    var heightMinus1 = height - 1;
+    var radiusPlus1  = radius + 1;
+    var sumFactor = radiusPlus1 * ( radiusPlus1 + 1 ) / 2;
+    
+    var stackStart = new BlurStack();
+    var stack = stackStart;
+    for ( i = 1; i < div; i++ )
+    {
+        stack = stack.next = new BlurStack();
+        if ( i == radiusPlus1 ) var stackEnd = stack;
+    }
+    stack.next = stackStart;
+    var stackIn = null;
+    var stackOut = null;
+    
+    yw = yi = 0;
+    
+    var mul_sum = mul_table[radius];
+    var shg_sum = shg_table[radius];
+    
+    for ( y = 0; y < height; y++ )
+    {
+        r_in_sum = g_in_sum = b_in_sum = a_in_sum = r_sum = g_sum = b_sum = a_sum = 0;
+        
+        r_out_sum = radiusPlus1 * ( pr = pixels[yi] );
+        g_out_sum = radiusPlus1 * ( pg = pixels[yi+1] );
+        b_out_sum = radiusPlus1 * ( pb = pixels[yi+2] );
+        a_out_sum = radiusPlus1 * ( pa = pixels[yi+3] );
+        
+        r_sum += sumFactor * pr;
+        g_sum += sumFactor * pg;
+        b_sum += sumFactor * pb;
+        a_sum += sumFactor * pa;
+        
+        stack = stackStart;
+        
+        for( i = 0; i < radiusPlus1; i++ )
+        {
+            stack.r = pr;
+            stack.g = pg;
+            stack.b = pb;
+            stack.a = pa;
+            stack = stack.next;
+        }
+        
+        for( i = 1; i < radiusPlus1; i++ )
+        {
+            p = yi + (( widthMinus1 < i ? widthMinus1 : i ) << 2 );
+            r_sum += ( stack.r = ( pr = pixels[p])) * ( rbs = radiusPlus1 - i );
+            g_sum += ( stack.g = ( pg = pixels[p+1])) * rbs;
+            b_sum += ( stack.b = ( pb = pixels[p+2])) * rbs;
+            a_sum += ( stack.a = ( pa = pixels[p+3])) * rbs;
+            
+            r_in_sum += pr;
+            g_in_sum += pg;
+            b_in_sum += pb;
+            a_in_sum += pa;
+            
+            stack = stack.next;
+        }
+        
+        
+        stackIn = stackStart;
+        stackOut = stackEnd;
+        for ( x = 0; x < width; x++ )
+        {
+            pixels[yi+3] = pa = (a_sum * mul_sum) >> shg_sum;
+            if ( pa != 0 )
+            {
+                pa = 255 / pa;
+                pixels[yi]   = ((r_sum * mul_sum) >> shg_sum) * pa;
+                pixels[yi+1] = ((g_sum * mul_sum) >> shg_sum) * pa;
+                pixels[yi+2] = ((b_sum * mul_sum) >> shg_sum) * pa;
+            } else {
+                pixels[yi] = pixels[yi+1] = pixels[yi+2] = 0;
+            }
+            
+            r_sum -= r_out_sum;
+            g_sum -= g_out_sum;
+            b_sum -= b_out_sum;
+            a_sum -= a_out_sum;
+            
+            r_out_sum -= stackIn.r;
+            g_out_sum -= stackIn.g;
+            b_out_sum -= stackIn.b;
+            a_out_sum -= stackIn.a;
+            
+            p =  ( yw + ( ( p = x + radius + 1 ) < widthMinus1 ? p : widthMinus1 ) ) << 2;
+            
+            r_in_sum += ( stackIn.r = pixels[p]);
+            g_in_sum += ( stackIn.g = pixels[p+1]);
+            b_in_sum += ( stackIn.b = pixels[p+2]);
+            a_in_sum += ( stackIn.a = pixels[p+3]);
+            
+            r_sum += r_in_sum;
+            g_sum += g_in_sum;
+            b_sum += b_in_sum;
+            a_sum += a_in_sum;
+            
+            stackIn = stackIn.next;
+            
+            r_out_sum += ( pr = stackOut.r );
+            g_out_sum += ( pg = stackOut.g );
+            b_out_sum += ( pb = stackOut.b );
+            a_out_sum += ( pa = stackOut.a );
+            
+            r_in_sum -= pr;
+            g_in_sum -= pg;
+            b_in_sum -= pb;
+            a_in_sum -= pa;
+            
+            stackOut = stackOut.next;
+
+            yi += 4;
+        }
+        yw += width;
     }
 
-})(window, undefined);
+    
+    for ( x = 0; x < width; x++ )
+    {
+        g_in_sum = b_in_sum = a_in_sum = r_in_sum = g_sum = b_sum = a_sum = r_sum = 0;
+        
+        yi = x << 2;
+        r_out_sum = radiusPlus1 * ( pr = pixels[yi]);
+        g_out_sum = radiusPlus1 * ( pg = pixels[yi+1]);
+        b_out_sum = radiusPlus1 * ( pb = pixels[yi+2]);
+        a_out_sum = radiusPlus1 * ( pa = pixels[yi+3]);
+        
+        r_sum += sumFactor * pr;
+        g_sum += sumFactor * pg;
+        b_sum += sumFactor * pb;
+        a_sum += sumFactor * pa;
+        
+        stack = stackStart;
+        
+        for( i = 0; i < radiusPlus1; i++ )
+        {
+            stack.r = pr;
+            stack.g = pg;
+            stack.b = pb;
+            stack.a = pa;
+            stack = stack.next;
+        }
+        
+        yp = width;
+        
+        for( i = 1; i <= radius; i++ )
+        {
+            yi = ( yp + x ) << 2;
+            
+            r_sum += ( stack.r = ( pr = pixels[yi])) * ( rbs = radiusPlus1 - i );
+            g_sum += ( stack.g = ( pg = pixels[yi+1])) * rbs;
+            b_sum += ( stack.b = ( pb = pixels[yi+2])) * rbs;
+            a_sum += ( stack.a = ( pa = pixels[yi+3])) * rbs;
+           
+            r_in_sum += pr;
+            g_in_sum += pg;
+            b_in_sum += pb;
+            a_in_sum += pa;
+            
+            stack = stack.next;
+        
+            if( i < heightMinus1 )
+            {
+                yp += width;
+            }
+        }
+        
+        yi = x;
+        stackIn = stackStart;
+        stackOut = stackEnd;
+        for ( y = 0; y < height; y++ )
+        {
+            p = yi << 2;
+            pixels[p+3] = pa = (a_sum * mul_sum) >> shg_sum;
+            if ( pa > 0 )
+            {
+                pa = 255 / pa;
+                pixels[p]   = ((r_sum * mul_sum) >> shg_sum ) * pa;
+                pixels[p+1] = ((g_sum * mul_sum) >> shg_sum ) * pa;
+                pixels[p+2] = ((b_sum * mul_sum) >> shg_sum ) * pa;
+            } else {
+                pixels[p] = pixels[p+1] = pixels[p+2] = 0;
+            }
+            
+            r_sum -= r_out_sum;
+            g_sum -= g_out_sum;
+            b_sum -= b_out_sum;
+            a_sum -= a_out_sum;
+           
+            r_out_sum -= stackIn.r;
+            g_out_sum -= stackIn.g;
+            b_out_sum -= stackIn.b;
+            a_out_sum -= stackIn.a;
+            
+            p = ( x + (( ( p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1 ) * width )) << 2;
+            
+            r_sum += ( r_in_sum += ( stackIn.r = pixels[p]));
+            g_sum += ( g_in_sum += ( stackIn.g = pixels[p+1]));
+            b_sum += ( b_in_sum += ( stackIn.b = pixels[p+2]));
+            a_sum += ( a_in_sum += ( stackIn.a = pixels[p+3]));
+           
+            stackIn = stackIn.next;
+            
+            r_out_sum += ( pr = stackOut.r );
+            g_out_sum += ( pg = stackOut.g );
+            b_out_sum += ( pb = stackOut.b );
+            a_out_sum += ( pa = stackOut.a );
+            
+            r_in_sum -= pr;
+            g_in_sum -= pg;
+            b_in_sum -= pb;
+            a_in_sum -= pa;
+            
+            stackOut = stackOut.next;
+            
+            yi += width;
+        }
+    }
+    
+    context.putImageData( imageData, top_x, top_y );
+    
+}
 
-var loader = document.getElementById('loader'),
-    border = document.getElementById('border');
+function BlurStack()
+{
+    this.r = 0;
+    this.g = 0;
+    this.b = 0;
+    this.a = 0;
+    this.next = null;
+}
 
-svgPieTimer({
-    // Element (Required) SVG sub element to animate. Accepts array.
-    element: [loader, border],
-    
-    // Duration (Optional) In milliseconds. Defaults to 1000.
-    duration: 1000,
-    
-    // Loops (Optional) Defaults to 1. Set to 0 for infinite.
-    loops: 0.7
+$( document ).ready(function() {
+  var BLUR_RADIUS = 40;
+  var sourceImages = [];
 
-    //     // Element (Required) SVG sub element to animate. Accepts array.
-    // element: [loader1, border1],
-    
-    // // Duration (Optional) In milliseconds. Defaults to 1000.
-    // duration: 1,
-    
-    // // Loops (Optional) Defaults to 1. Set to 0 for infinite.
-    // loops: 1
-});
+  $('.src-image').each(function(){
+    sourceImages.push($(this).attr('src'));
+  });
 
+  $('.avatar img').each(function(index){
+    $(this).attr('src', sourceImages[index] );
+  });
 
-svgPieTimer({
-        // Element (Required) SVG sub element to animate. Accepts array.
-    element: [loader1, border1],
+  var drawBlur = function(canvas, image) {
+    var w = canvas.width;
+    var h = canvas.height;
+    var canvasContext = canvas.getContext('2d');
+    canvasContext.drawImage(image, 0, 0, w, h);
+    stackBlurCanvasRGBA(canvas, 0, 0, w, h, BLUR_RADIUS);
+  }; 
     
-    // Duration (Optional) In milliseconds. Defaults to 1000.
-    duration: 1,
+  
+  $('.card canvas').each(function(index){
+    var canvas = $(this)[0];
     
-    // Loops (Optional) Defaults to 1. Set to 0 for infinite.
-    loops: 1
+    var image = new Image();
+    image.src = sourceImages[index];
+    
+    image.onload = function() {
+      drawBlur(canvas, image);
+    }
+  });
 });
