@@ -16,7 +16,6 @@ def load_user(user_id):
 def index():
 	return render_template('index.html')
 
-
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():	
 	signup_form = SignupForm()
@@ -32,7 +31,7 @@ def signup():
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
 	form = LoginForm()
-	if request.method =='POST': #form.validate_on_submit():
+	if request.method =='POST'  #form.validate_on_submit():
 		user = User.query.filter_by(email=form.email.data).first()
 		login_user(user, remember=True)
 		return redirect(url_for("lessons"))
@@ -43,5 +42,4 @@ def login():
 @app.route('/lessons')
 def lessons():
 	return render_template('dashboard.html')
-
-
+	

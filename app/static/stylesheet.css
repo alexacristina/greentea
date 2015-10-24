@@ -141,13 +141,12 @@ a {
 
 
 #page2{
-	background-color:#cccccc;
+	background-color:white;
 	background-position: center;
 	background-size: auto;
 	position: relative;
-	height: 100%;
-	width: 100%;
-	margin: 0 auto;
+	padding-top: 100px;
+	padding-bottom: 100px;
 }
 
 
@@ -193,9 +192,12 @@ a {
 	color:blue;
 }
 
+#footer img {
+	width: 100%;
+}
 
 #footer{
-	background-color:#3E3E68;
+	background-color:#cccccc;
 	background-position: center;
 	background-size: auto;
 	position: relative;
@@ -203,4 +205,5 @@ a {
 	width: 100%;
 	margin: 0 auto;
 }
+
 
