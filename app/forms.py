@@ -16,19 +16,18 @@ class SignupForm(Form):
     submit = SubmitField('Sign Up')
 
 class LoginForm(Form):
-    l_email = EmailField('Email', [Email()])
-    l_password = PasswordField('Password', [Required(), Length(6)])
+    email = EmailField('Email', [Email()])
+    password = PasswordField('Password', [Required(), Length(6)])
     submit = SubmitField('Log In')
 
     def validate(self):
         if not Form.validate(self):
             return False
-        
-        user = User.query.filter_by(email=self.l_email.data).first()
+        user = User.query.filter_by(email=self.email.data).first()
         if user is None:
-            self.l_email.errors.append('User with email %s not registered' % self.l_email.data)
+            self.email.errors.append('User with email %s not registered' % self.email.data)
             return False
-        if not check_password_hash(user.password, self.l_password.data):
-            self.l_password.errors.append('Password is invallid')
+        if not check_password_hash(user.h_password, self.password.data):
+            self.h_password.errors.append('Password is invallid')
             return False
         return True
