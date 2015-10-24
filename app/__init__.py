@@ -13,6 +13,8 @@ app.secret_key = "secret"
 db = SQLAlchemy(app)
 
 login_manager= LoginManager(app)
+login_manager.init_app(app)
+
 
 
 Bootstrap(app)
