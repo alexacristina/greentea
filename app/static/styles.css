@@ -88,6 +88,7 @@ color: #999;
 
 .small-button a {
   text-decoration: none;
+  color: ;
 }
 
 .small-button:hover {
@@ -110,4 +111,12 @@ color: #999;
 div .small-button .wide .yep {
 
   font-size: 650px;
+}
+
+.x-button {
+  background-color: transparent;
+}
+
+.x-button:hover {
+  border: red;
 }
