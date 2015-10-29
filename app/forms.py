@@ -15,6 +15,9 @@ class SignupForm(Form):
     image_url = TextField('Image URL', [Required()])
     submit = SubmitField('Sign Up')
 
+    def full_name(self):
+        return self.first_name + ' ' + self.last_name
+
 class LoginForm(Form):
     email = EmailField('Email', [Email()])
     password = PasswordField('Password', [Required(), Length(6)])
