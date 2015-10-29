@@ -42,4 +42,12 @@ def login():
 @app.route('/lessons')
 def lessons():
 	return render_template('dashboard.html')
+
+@app.route('/lesson_presentation')
+def presentation():
+	return 'samsing'
+
+@app.route('/canvas')
+def canvas():
+	return render_template('canvas.html')
 	
