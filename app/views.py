@@ -45,9 +45,20 @@ def lessons():
 
 @app.route('/lesson_presentation')
 def presentation():
-	return 'samsing'
+	return render_template('lessons.html')
 
 @app.route('/canvas')
 def canvas():
 	return render_template('canvas.html')
+
+@app.route('/square')
+def square():
+	return render_template('square.html')
+
+@app.route('/rectangle')
+def rectangle():
+	return render_template('rectangle.html')
 	
+@app.route('/option')
+def option():
+	return render_template('option.html')

@@ -6,103 +6,6 @@ body {
 	background-color: black;
 }*/
 
-.signup-form{
-	padding-top: 20px;
-	border-radius: 
-}
-
-.item img {
-	width: 100%;
-}
-
-
-.src-image {
-  display: none;
-}
-
-.card {
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #CCC;
-  text-align: center;
-  padding: 0;
-  background-color: #007196;
-  color: rgb(136, 172, 217);
-}
-
-.card .header-bg {
-  /* This stretches the canvas across the entire hero unit */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  border-bottom: 1px #FFF solid;
-  /* This positions the canvas under the text */
-  z-index: 1;
-}
-.card .avatar {
-  position: relative;
-  margin-top: 15px;
-  z-index: 100;
-}
-
-.card .avatar img {
-  width: 100px;
-  height: 100px;
-}
-
-
-body{padding-top:30px;}
-
-.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
-
-small {
-display: block;
-line-height: 1.428571429;
-color: #999;
-}
-
-.row-x {
-	padding-top: 25px;
-}
-
-
-.small-button {
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  border:1px solid #a8a8a8;
-  display:inline-block;
-  color:#a8a8a8;
-  font-size:36px;
-  font-weight:700;
-  line-height:28px;
-  height:28px;
-  padding:1.5%;
-  margin:15px 15px 0;
-  text-align:center;
-  -o-transition:.3s ease-in-out;
-  -ms-transition:.3s ease-in-out;
-  -moz-transition:.3s ease-in-out;
-  -webkit-transition:.3s ease-in-out;transition:.3s ease-in-out
-  }
-
-.small-button a {
-  text-decoration: none;
-  color: ;
-}
-
-.small-button:hover {
-  cursor:pointer;
-  color:#0099cc;
-  border:1px solid #0099cc
-  }
-.transition {
-  -o-transition:.3s ease-in-out;
-  -ms-transition:.3s ease-in-out;
-  -moz-transition:.3s ease-in-out;
-  -webkit-transition:.3s ease-in-out;
-  transition:.3s ease-in-out
-}
 .yep {
   width: 50%;
   height: 20%
@@ -120,3 +23,34 @@ div .small-button .wide .yep {
 .x-button:hover {
   border: red;
 }
+
+ .glyphicon-pencil {
+  font-size: 50px;
+ }
+
+ .glyphicon-book {
+  font-size: 50px;
+ }
+
+ .glyphicon-list-alt {
+  font-size: 50px;
+ }
+
+ div #page2 .row {
+  padding-top: 100px;
+ }
+
+ .backg {
+  background-image: url('http://www.rknstudio.com/wp-content/themes/Proma/images/bgs/07.jpg');
+ }
+
+.newman {
+  padding-top: 220px;
+ }
+
+ .btn-default{
+  height: 100px;
+  width: 130%;
+  border-radius: 1px;
+ }
+
