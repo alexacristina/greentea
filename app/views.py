@@ -17,7 +17,7 @@ def index():
 	return render_template('index.html')
 
 @app.route('/signup', methods = ['GET', 'POST'])
-def signup():	
+def signup():
 	signup_form = SignupForm()
 	if signup_form.validate_on_submit():
 		user = User(first_name=signup_form.first_name.data, last_name=signup_form.last_name.data, \
@@ -50,4 +50,4 @@ def presentation():
 @app.route('/canvas')
 def canvas():
 	return render_template('canvas.html')
-	
+
