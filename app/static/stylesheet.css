@@ -76,7 +76,7 @@ a {
 	background-position: center;
 	background-size: auto;
 	position: relative;
-	height: 60%;
+	height: 80%;
 	width: 100%;
 	margin: 0 auto;
 }
@@ -120,7 +120,7 @@ a {
 	height: 90%;
 	width: 100%;
 	margin: 0 auto;
-  
+
     background: -webkit-linear-gradient(#F8F8F8 , #ffffff); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#F8F8F8 , #ffffff); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#F8F8F8 , #ffffff); /* For Firefox 3.6 to 15 */

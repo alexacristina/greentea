@@ -7,19 +7,18 @@
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                        <img src = {{ user.image_url|safe }} alt="" class="img-rounded img-responsive img-width" />
                     </div>
                     <div class="col-sm-6 col-md-8">
-                        <h4>
-                            Bhaumik Patel</h4>
+                        <h4> {{ user.first_name + user.last_name }} </h4>
                         <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>
                         <p>
-                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <i class="glyphicon glyphicon-envelope"></i> {{ user.email }}
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <i class="glyphicon glyphicon-education"></i>{{ user.school }}
                             <br />
-                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                            <i class="glyphicon glyphicon-signal"></i>{{ user.class_year }}</p>
                         <!-- Split button -->
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary">
@@ -41,55 +40,42 @@
         </div>
     </div>
 </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-               
-                <div class="avatar">
-                    <img src="https://41.media.tumblr.com/d3496cd756e4ed7c0dbd9ac2f503fe1e/tumblr_nwp6htOe7N1udztn8o3_75sq.png" alt="" />
-                </div>
-                <div class="content">
-                    <p>Web Developer <br>
-                       More description here</p>
-                    <p><button type="button" class="btn btn-default x-button">Aria Pătratului</button></p>
-                </div>
+        <div id="page2i">
+        <!--    <div class="small-button wide yep"><a href='/lessons'>ACCEPTĂ PROVOCAREA</a></div>
+            <br/><br/> -->
+
+        <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6 contur1 contur">
+            <a href="square">
+                <button type="button" class="btn btn-default"><h2>Pătratul</h2></button>
+            </a>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="avatar av-one">
-                    <img src="https://41.media.tumblr.com/5b954822e4ac8bb220c4e237cb69d350/tumblr_nwpbfpovRs1udztn8o1_100.png" alt="" />
-                </div>
-                <div class="content">
-                    <p>Web Developer <br>
-                       More description here</p>
-                    <p><button type="button" class="btn btn-default x-button">Aria dreptunghiului</button></p>
-                </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6 contur">
+            <a href="rectangle">
+                <button type="button" class="btn btn-default"><h2>Dreptunghiul</h2></button>
+            </a>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="avatar ">
-                    <img src="https://36.media.tumblr.com/fa810f8e1c360d33386307e968eecf3e/tumblr_nwp6htOe7N1udztn8o1_100.png" alt="" />
-                </div>
-                <div class="content">
-                    <p>Web Developer <br>
-                       More description here</p>
-                    <p><button type="button" class="btn btn-default x-button">Aria figurii compuse</button></p>
-                </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6 contur">
+            <a href="square">
+                <button type="button" class="btn btn-default"><h2>Figura compusă</h2></button>
+            </a>
             </div>
+        </div>
         </div>
     </div>
 
 
-      
     </div>
 </div>
-
-
-<img class="src-image"  src="http://www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg"/>
-
-<img class="src-image"  src="http://www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg"/>
-
-<img class="src-image"  src="http://www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg"/>
 {% endblock %}

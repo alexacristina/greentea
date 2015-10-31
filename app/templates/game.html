@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+
+  <!-- font gruppo -->
+  <link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="static/js/game.js"></script>
+{% endblock %}
+
+
+{% block content %}
+  <div id="da_sau_nu_game_wrapper">
+
+    <div id="countdown_wrapper" >
+
+
+
+
+      <svg id="countdown_muted_circle" class="svg_timer" viewbox="0 0 250 250">
+        <path id="border1" transform="translate(125,125)" />
+        <path id="loader1" transform="translate(125,125) scale(.60)" />
+      </svg>
+
+      <svg id="countdown_active_circle" class="svg_timer" viewbox="0 0 250 250">
+        <path id="border" transform="translate(125,125)" />
+        <path id="loader" transform="translate(125,125) scale(.60)" />
+      </svg>
+
+      <!--      <span id="hurry_text">mai repede !</span> -->
+
+    </div>
+
+    <div id="task_wrapper">
+
+      <!-- 23-10_modifications -->
+
+      <div id="task_container" ></div>
+
+
+      <div class="tasks" id="task1">
+
+        <svg  id="task_drawing" width="270" height="130">
+          <text id="latura1" class="dimension_text" x="210" y="50" fill="#FFCCFF"></text>
+          <text id="latura2" class="dimension_text" x="85" y="105" fill="#FFCCFF"></text>
+
+          <rect  id = "patratel"  style="fill:#8e8e9f;stroke-width:2;stroke:#FFCCFF;">
+
+            Sorry, your browser does not support inline SVG.
+          </svg>
+
+        </div>
+
+      </div>
+
+
+      <div id="solution_container" ></div>
+
+
+
+      <div class="solutions" id="solution1">
+        <span class="text_gruppo " id="sol">Aria = 120 cm</span>
+      </div>
+
+
+
+
+
+      <div id="answer">
+        <button class="answer_btn_da" id="answer_btn_true" >DA
+        </button>
+        <button class="answer_btn_nu" id="answer_btn_false">NU
+        </button>
+      </div>
+
+    </div>
+
+  <p id = "puncte" style="font-size:25px; color:#391959; font-weight:bold;"></p>
+
+{% endblock %}

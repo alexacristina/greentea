@@ -13,7 +13,9 @@ class User (UserMixin, db.Model):
 	email = db.Column(db.String, unique=True, index=True)
 	h_password = db.Column(db.String(1000))
 	image_url = db.Column(db.String)
-	game_points = db.relationship("Lesson", secondary='achievements', )
+	school = db.Column(db.String(60), default="")
+	class_year = db.Column(db.String(10), default="")
+	game_points = db.relationship("Lesson", secondary='achievements' )
 
 
 	def full_name(self):
@@ -21,14 +23,14 @@ class User (UserMixin, db.Model):
 
 	def __repr__(self):
 		return '<User %s>' % self.email
-	
+
 	def __init__(self, first_name, last_name, email, image_url):
 		self.first_name = first_name
 		self.last_name = last_name
 		self.email = email
 		self.image_url = image_url
 
-	
+
 	def set_password(self, password):
 		self.h_password = generate_password_hash(password=password)
 		self.save()

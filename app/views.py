@@ -25,7 +25,7 @@ def signup():
 		user.save()
 		user.set_password(password=signup_form.password.data)
 		login_user(user, remember=True)
-		return redirect(url_for('lessons'))
+		return redirect(url_for('dashboard'))
 	return render_template('signup.html', signup_form=signup_form, login_form=LoginForm())
 
 @app.route('/login', methods = ['GET', 'POST'])
@@ -34,18 +34,25 @@ def login():
 	if form.validate_on_submit():
 		user = User.query.filter_by(email=form.email.data).first()
 		login_user(user, remember=True)
-		return redirect(url_for("lessons"))
+		return redirect(url_for("dashboard"))
 	return render_template('signup.html', signup_form=SignupForm(), login_form=form)
 
 
-
-@app.route('/lessons')
-def lessons():
-	return render_template('dashboard.html')
+@app.route('/logout', methods = ['GET', 'POST'])
+@login_required
+def logout():
+	logout_user()
+	return render_template('index.html')
 
 @app.route('/lesson_presentation')
 def presentation():
 	return render_template('lessons.html')
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+	user = User.query.filter_by(email=current_user.email).first()
+	return render_template('dashboard.html', user=user)
 
 @app.route('/canvas')
 def canvas():
@@ -62,3 +69,11 @@ def rectangle():
 @app.route('/option')
 def option():
 	return render_template('option.html')
+
+@app.route('/game')
+@login_required
+def game():
+	user = User.query.filter_by(email=current_user.email).first()
+	return render_template('game.html')
+
+

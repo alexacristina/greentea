@@ -54,3 +54,310 @@ div .small-button .wide .yep {
   border-radius: 1px;
  }
 
+.container {
+  padding-top: 50px;
+}
+
+.btn-info {
+height: 80px;
+width: 30%;
+}
+
+.btn-info a{
+color: white;
+text-decoration: none;
+}
+
+
+
+
+/*game css*/
+
+
+/*countdown timer*/
+.svg_timer {
+    float: right;
+
+
+
+    /*display: block;*/
+    margin:  15px 20% 0 0;
+    width: 50px;
+    height: 50px;
+
+  /* To reverse the animation, flip the object using CSS by uncommenting the below */
+
+  /*-webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";*/
+}
+
+#loader
+{ fill: #ffffff }
+
+#border
+{ fill: #CC4A4A }
+
+
+#countdown_muted_circle{
+
+
+}
+
+#loader1
+{ fill: #ffffff;
+
+ }
+
+#border1
+{ fill: #d1d1d1;
+
+}
+
+#countdown_active_circle{
+  margin-right: -50px;
+
+}
+
+#loader
+{ fill: #ffffff }
+
+#border
+{ fill: #CC4A4A }
+
+/*end of countdown timer*/
+
+
+
+
+
+
+/*#da_sau_nu_game_wrapper {
+  width: 960px;
+  height: 200px;
+  background-color: #eeeeee;
+  margin: 5% auto 0;
+
+}*/
+
+
+
+#da_sau_nu_game_wrapper {
+background-color: white;
+background-position: center;
+background-size: auto;
+/*position: relative;*/
+width: 70%;
+/*height: 480px;*/
+
+margin: 80px auto 0;
+
+border-radius: 10px;
+
+height: 520px;
+
+/*padding: 0;*/
+
+}
+
+
+#countdown_wrapper {
+  width: 100%;
+  height:70px;
+/*  background-color: rgba(23,43,43,0.1);*/
+
+
+}
+
+/*
+#task_wrapper {
+  width: 100%;*/
+  /*height: 470px;*/
+/*  background-color: #bbbbbb;*/
+/*  margin: 0 auto 0;
+  display: block;
+}*/
+
+
+#task {
+/*  float: left;*/
+  width: 36%;
+  min-width: 275px;
+  height: 200px;
+/*  background-color: #121F2D;*/
+ /* background-color:   #2E2E44;*/
+/*  background-color: #2e2e3f;*/
+  background-color: #3e3e4f;
+  border-radius: 5px;
+/*  margin-top: 30px;*/
+  margin: 0 auto 0;
+}
+
+#task_drawing {
+  margin: 40px auto 0;
+
+}
+
+
+#solution {
+/*  float: left;*/
+  width: 30%;
+  min-width: 200px;
+/*  height: 150px;*/
+/*  background-color: #aaaaaa;*/
+  margin: 40px auto 10px;
+  background-color: #d1d1d1;
+  padding:10px;
+/*  margin-top: 20px;*/
+}
+
+#answer {
+/*  float: left;*/
+  width: 45%;
+  height: 150px;
+/*  background-color: #ccaaca;*/
+  margin: 0 auto 0;
+  min-width: 400px;
+}
+
+.dimension_text {
+  font-family: 'Gruppo', cursive;
+  fill: #FFFFFF;
+  font-size: 25px;
+}
+
+
+
+.text_gruppo {
+  font-family: 'Gruppo', cursive;
+  font-size: 40px;
+  color: #101C28;
+}
+
+.answer_btn_da {
+  float: left;
+  width: 43%;
+  min-width: 150px;
+  height: 50px;
+  border: 2px solid  #CC4A4A;
+  margin: 40px 0 0 4%;
+  color:  #eeeeee;
+  font-family: 'Gruppo', cursive;
+  font-size: 38px;
+
+  background-color: #CC4A4A;
+  padding: 5px;
+
+  border-radius: 5px;
+  transition: background-color 0.15s;
+}
+
+.answer_btn_nu {
+  float: left;
+  width: 43%;
+  min-width: 150px;
+  height: 50px;
+  border: 2px solid  #CC4A4A;
+  margin: 40px 0 0 4%;
+  color:  #eeeeee;
+  font-family: 'Gruppo', cursive;
+  font-size: 38px;
+
+  background-color: #CC4A4A;
+  padding: 5px;
+
+  border-radius: 5px;
+  transition: background-color 0.15s;
+}
+
+#answer_btn_true {
+  color: #eeeeee;
+  border: 2px solid #407940;
+  background-color: #407940;
+}
+
+
+#answer_btn_true:hover {
+  color: #407940;
+  background-color: #eeeeee ;
+  cursor: pointer;
+}
+
+#answer_btn_false:hover {
+  color: #CC4A4A;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+#answer_btn_false {
+  min-width: 80px;
+ }
+
+
+#hurry_text {
+  font-family: 'Gruppo', cursive;
+  color: #CC4A4A;
+  font-size: 30px;
+  font-style: italic;
+  float: right;
+  margin: 30px 15px 0 0;
+}
+
+
+
+
+
+/*23-10_modifications*/
+
+.tasks {
+  display: none;
+}
+
+
+#task_container {
+
+  float:left;
+  text-align: center;
+/*  background-color:rgba(30,0,50,0.5);*/
+  /*
+  background-color: #3e3e4f;*/
+  opacity: 1;
+  visibility: hidden;
+  width: 60%;
+  min-width: 205px;
+  height: 200px;
+/*  background-color: #121F2D;*/
+ /* background-color:   #2E2E44;*/
+/*  background-color: #2e2e3f;*/
+  background-color: #3e3e4f;
+  border-radius: 5px;
+  margin-left: 20%;
+
+}
+
+
+#task1{
+}
+
+
+.solutions {
+  display: none;
+}
+
+
+
+#solution_container {
+
+  opacity: 1;
+  visibility: hidden;
+  float: left;
+  margin:20px;
+  margin-left: 35%;
+  width: 30%;
+  min-width: 200px;
+  background-color: #d1d1d1;
+  padding:10px;
+}
